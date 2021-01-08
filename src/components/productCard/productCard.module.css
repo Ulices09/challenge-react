@@ -1,0 +1,32 @@
+.card {
+    border-width: 0.5;
+    border-style: solid;
+    border-radius: 0;
+}
+
+.card:hover {
+    border-color: black;
+    cursor: pointer;
+}
+
+.image {
+    height: 300px;
+    object-fit: contain;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.bottomContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
