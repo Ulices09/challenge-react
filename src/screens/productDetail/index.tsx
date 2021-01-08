@@ -1,16 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Layout } from '../../components';
 import { useParams } from 'react-router-dom';
 import { useRequest } from '../../hooks';
 import { productService } from '../../service';
 import styles from './productDetail.module.css';
+import { ShoppingCartContext } from '../../context/shoppingCart';
 
 const ProductDetail: FC = () => {
     const params: any = useParams();
     const { data, loading, error } = useRequest(productService.getProduct, {
         id: params.id,
     });
+
+    const { addToCart } = useContext(ShoppingCartContext);
 
     return (
         <Layout loading={loading} error={error}>
@@ -30,7 +33,10 @@ const ProductDetail: FC = () => {
                         </div>
                         <p className={styles.category}>{data.category}</p>
                         <p>{data.description}</p>
-                        <button className={`btn btn-dark ${styles.button}`}>
+                        <button
+                            className={`btn btn-dark ${styles.button}`}
+                            onClick={() => addToCart(data)}
+                        >
                             Add to cart
                         </button>
                     </div>

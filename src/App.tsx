@@ -1,10 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Layout } from './components';
 import Routes from './routes';
+import { ShoppingCartProvider } from './context/shoppingCart';
 
 function App() {
-    return <Routes />;
+    return (
+        <ShoppingCartProvider>
+            <Routes />
+        </ShoppingCartProvider>
+    );
 }
 
 export default App;

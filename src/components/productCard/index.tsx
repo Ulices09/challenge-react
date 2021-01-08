@@ -1,5 +1,6 @@
-import React, { FC, MouseEvent } from 'react';
+import React, { FC, MouseEvent, useContext } from 'react';
 import { IProduct } from '../../core/types';
+import { ShoppingCartContext } from '../../context/shoppingCart';
 import styles from './productCard.module.css';
 
 type IProps = {
@@ -8,15 +9,21 @@ type IProps = {
 };
 
 const ProductCard: FC<IProps> = ({ product, onClick }) => {
+    const { addToCart } = useContext(ShoppingCartContext);
+
+    const handleAddToCart = () => {
+        addToCart(product);
+    };
+
     return (
         <div
             className={`card col-12 col-sm-2 col-md-4 col-lg-3 ${styles.card}`}
-            onClick={onClick}
         >
             <img
                 className={`${styles.image} card-img-top`}
                 src={product.image}
                 alt={product.title}
+                onClick={onClick}
             />
             <div>
                 <span className={`mt-2 mb-3 ${styles.title}`}>
@@ -25,7 +32,9 @@ const ProductCard: FC<IProps> = ({ product, onClick }) => {
 
                 <div className={`mb-2 ${styles.bottomContent}`}>
                     <b>{`S/ ${product.price}`}</b>
-                    <button className="btn btn-dark">Add to cart</button>
+                    <button className="btn btn-dark" onClick={handleAddToCart}>
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </div>
