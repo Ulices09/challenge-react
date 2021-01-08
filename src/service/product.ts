@@ -10,3 +10,12 @@ export const getProducts = async (): Promise<IProduct[]> => {
         throw new Error(error.response?.data?.message || ERROR_MESSAGE);
     }
 };
+
+export const getProduct = async ({ id }: { id: number }): Promise<IProduct> => {
+    try {
+        const response = await axios.get(`${BASE_URL}/products/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || ERROR_MESSAGE);
+    }
+};
