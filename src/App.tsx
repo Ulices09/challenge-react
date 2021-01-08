@@ -1,13 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Layout } from './components';
+import Routes from './routes';
 
 function App() {
-    return (
-        <Layout>
-            <h1>khe fue</h1>
-        </Layout>
-    );
+    return <Routes />;
 }
 
 export default App;
